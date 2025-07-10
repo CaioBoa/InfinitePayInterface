@@ -14,6 +14,48 @@ A multi-agent chatbot system designed to answer questions about InfinitePay’s 
 
 ---
 
+## How to Run the Application
+
+### Option 1: Using Docker (Recommended)
+
+```bash
+docker-compose up --build
+```
+
+Then access the web interface at [http://localhost:8501](http://localhost:8501)
+
+### Option 2: Running Locally via Terminal
+
+#### On Linux or macOS:
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+chmod +x start.sh
+./start.sh
+```
+
+#### On Windows (PowerShell):
+
+```powershell
+python -m venv venv
+.\venv\Scripts\activate
+pip install -r requirements.txt
+```
+*On different terminals*
+```powershell
+streamlit run frontend.py --server.port 8501 --server.address localhost
+```
+```powershell
+uvicorn main:app --host 0.0.0.0 --port 8000
+```
+
+Make sure the ports `8000` and `8501` are free. After starting, open your browser and go to [http://localhost:8501](http://localhost:8501) to access the frontend.
+
+
+---
+
 ## Agent Roles
 
 * **RouterAgent**: Entry point that classifies the incoming message via LLM and determines the processing agent.
@@ -84,7 +126,7 @@ The `KnowledgeAgent` loads the FAISS index and creates a `RetrievalQA` chain:
 
 ---
 
-## 🔧 Testing Strategy
+## Testing Strategy
 
 ### How to Run
 
