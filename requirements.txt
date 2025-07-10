@@ -1,0 +1,17 @@
+numpy<2.0.0
+fastapi
+uvicorn
+langchain
+openai
+bs4
+requests
+pytest
+faiss-cpu
+beautifulsoup4
+langchain-community
+langchain-google-genai
+python-dotenv
+streamlit
+transformers
+torch==2.2.2+cpu
+--extra-index-url https://download.pytorch.org/whl/cpu

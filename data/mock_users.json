@@ -1,0 +1,88 @@
+{
+  "usuario_123": {
+    "balance": 453.25,
+    "transactions": [
+      {
+        "type": "debit",
+        "value": 120.0
+      },
+      {
+        "type": "debit",
+        "value": 50.0
+      },
+      {
+        "type": "debit",
+        "value": 200.0
+      }
+    ]
+  },
+  "client789": {
+    "balance": 900.9,
+    "transactions": [
+      {
+        "type": "deposit",
+        "value": 37.0
+      },
+      {
+        "type": "deposit",
+        "value": 37.0
+      },
+      {
+        "type": "deposit",
+        "value": 37.0
+      },
+      {
+        "type": "debit",
+        "value": 25.0
+      },
+      {
+        "type": "debit",
+        "value": 80.0
+      }
+    ]
+  },
+  "cliente_a": {
+    "balance": 100000000.0,
+    "transactions": [
+      {
+        "type": "deposit",
+        "value": 100000000.0
+      }
+    ]
+  },
+  "usuario_b": {
+    "balance": 20.0,
+    "transactions": [
+      {
+        "type": "deposit",
+        "value": 10.0
+      },
+      {
+        "type": "deposit",
+        "value": 10.0
+      }
+    ]
+  },
+  "user_b": {
+    "balance": 50.0,
+    "transactions": [
+      {
+        "type": "debit",
+        "value": -50.0
+      },
+      {
+        "type": "deposit",
+        "value": 100.0
+      }
+    ]
+  },
+  "user_1": {
+    "balance": 77.0,
+    "transactions": [
+      {
+        "type": "deposit",
+        "value": 100.0
+      }
+    ]
+  }
+}
