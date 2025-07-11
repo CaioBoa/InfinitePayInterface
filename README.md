@@ -16,7 +16,7 @@ A multi-agent chatbot system designed to answer questions about InfinitePay’s 
 
 ## How to Run the Application
 
-### Option 1: Using Docker (Recommended)
+### Option 1: Using Docker Local (Recommended)
 
 ```bash
 docker-compose up --build
@@ -53,6 +53,18 @@ uvicorn main:app --host 0.0.0.0 --port 8000
 
 Make sure the ports `8000` and `8501` are free. After starting, open your browser and go to [http://localhost:8501](http://localhost:8501) to access the frontend.
 
+Remember to change **test** value at **config.py** to True if running the application this way.
+
+### Option 3: Using Render Backend
+
+If the render deploy is still running there is the option to run just the frontend locally.
+
+```powershell
+pip install streamlit
+streamlit run frontend.py --server.port 8501 --server.address 0.0.0.0
+```
+
+Then just open [http://localhost:8501](http://localhost:8501) and set **API Environment** to **Render (Prod)**
 
 ---
 
@@ -152,3 +164,19 @@ pytest test_app.py
 * SupportAgent data integrity checks using mock JSON database
 
 ---
+
+## Configuration
+
+### `config.py`
+
+This file contains core application configuration:
+
+* `model`: Specifies the LLM model used across agents (e.g., `gemini-2.0-flash`).
+* `test`: Set to `True` if running the project outside Docker (e.g., during development).
+
+### `.env`
+
+Environment variables required for the application:
+
+* `GOOGLE_API_KEY`: Your API key to access the Google Generative AI models. This is essential for all LLM-based functionality.
+

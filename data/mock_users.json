@@ -17,8 +17,12 @@
     ]
   },
   "client789": {
-    "balance": 900.9,
+    "balance": 901.6999999999999,
     "transactions": [
+      {
+        "type": "deposit",
+        "value": 0.8
+      },
       {
         "type": "deposit",
         "value": 37.0

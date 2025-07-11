@@ -25,6 +25,7 @@ class CustomerSupportAgent:
             template=(
                 "You are a support agent for InfinitePay.\n"
                 "Based on the data below and the user's message, identify the intended actions and provide a personalized response.\n\n"
+                "Always respond in fluent and professional English, regardless of the user's language.\n"
                 "USER DATA (or 'N/A' if not available):\n{user_data}\n\n"
                 "USER MESSAGE:\n{message}\n\n"
                 "If the user wants to create an account, set create_user to true\n"
@@ -38,7 +39,6 @@ class CustomerSupportAgent:
                 "  \"amount\": number (estimated value),\n"
                 "  \"final_response\": \"personalized response to the user\"\n"
                 "}}\n"
-                "Respond in the same language as the message received."
             )
         )
         self.chain = self.prompt | self.llm | self.parser
@@ -54,16 +54,25 @@ class CustomerSupportAgent:
             return "There was an error interpreting the agent's response."
         print("Parsed response:", parsed)
 
-        if parsed.create_user and user_id not in self.users:
-            return self.create_new_user(user_id)
+        response = {}
 
-        if parsed.add_balance and user_id in self.users:
-            return self.add_balance(user_id, parsed.amount)
+        if parsed.create_user and not user:
+            response["answer"] = self.create_new_user(user_id)
+            response["tools"] = ["create_user"]
+        elif parsed.add_balance and user:
+            response["answer"] = self.add_balance(user_id, parsed.amount)
+            response["tools"] = ["add_balance"]
+        elif parsed.debit_balance and user:
+            response["answer"] = self.debit_balance(user_id, parsed.amount)
+            response["tools"] = ["debit_balance"]
+        elif user:
+            response["answer"] = parsed.final_response
+            response["tools"] = []
+        else:
+            response["answer"] = "User not Found."
+            response["tools"] = []
 
-        if parsed.debit_balance and user_id in self.users:
-            return self.debit_balance(user_id, parsed.amount)
-
-        return parsed.final_response if user else "User not Found."
+        return response
 
     def create_new_user(self, user_id: str) -> str:
         default_user_data = {

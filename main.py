@@ -44,10 +44,15 @@ async def ask(input: MessageInput):
     print(f"Received message: {input.message} from user: {input.user_id}")
     route = router.route(input.message)
     print(f"Routed to: {route}")
+
+    tools = []
+
     if route == "knowledge":
         response = knowledge_agent.answer(input.message)
     elif route == "support":
-        response = support_agent.handle(input.message, input.user_id)
+        raw_response = support_agent.handle(input.message, input.user_id)
+        response = raw_response["answer"]
+        tools = raw_response["tools"]
     elif route == "slack":
         response = slack_agent.handle(input.message, input.user_id)
     else:
@@ -59,6 +64,7 @@ async def ask(input: MessageInput):
         "response": final_response,
         "source_agent_response": response,
         "agent_workflow": [
-            {"agent_name": route}
+            {"agent_name": route, "tools": tools},
+            {"agent_name": "personality", "tools": []}
         ]
     }
