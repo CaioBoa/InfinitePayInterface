@@ -22,7 +22,7 @@ A multi-agent chatbot system designed to answer questions about InfinitePay’s 
 docker-compose up --build
 ```
 
-Then access the web interface at [https://infinitepayinterface.onrender.com](https://infinitepayinterface.onrender.com)
+Then access the web interface at [http://localhost:8000](http://localhost:8000).
 
 ### Option 2: Running Locally via Terminal
 
@@ -57,7 +57,7 @@ Remember to change **test** value at **config.py** to True if running the applic
 
 ### Option 3: Render
 
-If the render deploy is still running you can just acess the link [http://localhost:8000](http://localhost:8000).
+If the render deploy is still running you can just acess the link [https://infinitepayinterface.onrender.com](https://infinitepayinterface.onrender.com).
 
 ---
 
