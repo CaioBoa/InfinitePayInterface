@@ -22,7 +22,7 @@ A multi-agent chatbot system designed to answer questions about InfinitePay’s 
 docker-compose up --build
 ```
 
-Then access the web interface at [http://localhost:8501](http://localhost:8501)
+Then access the web interface at [http://localhost:8000](http://localhost:8000)
 
 ### Option 2: Running Locally via Terminal
 
@@ -45,26 +45,19 @@ pip install -r requirements.txt
 ```
 *On different terminals*
 ```powershell
-streamlit run frontend.py --server.port 8501 --server.address localhost
+streamlit run frontend.py --server.port 8000 --server.address 0.0.0.0
 ```
 ```powershell
-uvicorn main:app --host 0.0.0.0 --port 8000
+uvicorn main:app --host 0.0.0.0 --port 8001
 ```
 
-Make sure the ports `8000` and `8501` are free. After starting, open your browser and go to [http://localhost:8501](http://localhost:8501) to access the frontend.
+Make sure the ports `8000` and `8001` are free. After starting, open your browser and go to [http://localhost:8000](http://localhost:8000) to access the frontend.
 
 Remember to change **test** value at **config.py** to True if running the application this way.
 
-### Option 3: Using Render Backend
+### Option 3: Render
 
-If the render deploy is still running there is the option to run just the frontend locally.
-
-```powershell
-pip install streamlit
-streamlit run frontend.py --server.port 8501 --server.address 0.0.0.0
-```
-
-Then just open [http://localhost:8501](http://localhost:8501) and set **API Environment** to **Render (Prod)**
+If the render deploy is still running you can just acess the link [http://localhost:8000](http://localhost:8000).
 
 ---
 
