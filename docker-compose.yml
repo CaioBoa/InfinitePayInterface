@@ -5,8 +5,8 @@ services:
     build: .
     container_name: agent-swarm-app
     ports:
-      - "8000:8000"  # FastAPI
-      - "8501:8501"  # Streamlit
+      - "8001:8001"  # FastAPI
+      - "8000:8000"  # Streamlit
     volumes:
       - .:/app
     environment:

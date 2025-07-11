@@ -8,14 +8,6 @@ st.markdown(
 )
 st.markdown("<hr>", unsafe_allow_html=True)
 
-env = st.sidebar.selectbox(
-    "Select API environment",
-    options=["Local", "Render (Prod)"],
-    format_func=lambda x: x
-)
-
-base_url = "http://localhost:8000" if env == "Local" else "https://infinitepayinterface.onrender.com"
-
 with st.form("agent_form"):
     message = st.text_area("Your Message:", placeholder="Ex: I want to know my current balance.")
     user_id = st.text_input("User ID:", placeholder="Ex: user_123")
@@ -28,7 +20,7 @@ if submitted:
     else:
         try:
             response = requests.post(
-                f"{base_url}/ask",
+                "http://localhost:8001/ask",
                 json={"message": message, "user_id": user_id, "tone": tone},
                 timeout=30
             )
