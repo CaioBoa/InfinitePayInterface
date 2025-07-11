@@ -88,5 +88,18 @@
         "value": 100.0
       }
     ]
+  },
+  "user778": {
+    "balance": 77802.7,
+    "transactions": [
+      {
+        "type": "debit",
+        "value": -85.3
+      },
+      {
+        "type": "deposit",
+        "value": 77888.0
+      }
+    ]
   }
 }
